@@ -19,7 +19,7 @@ readme_content = """# Лабораторная работа №1 — Flask + Pos
 ```bash
 # Клонирование проекта
 git clone <URL репозитория>
-cd lr1-docker-rest
+cd MSTUCA_LR1
 
 # Сборка и запуск
 docker compose up --build
