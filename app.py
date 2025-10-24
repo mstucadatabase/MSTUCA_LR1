@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # === Определение варианта ===
-study_group = "БИ211"  # поменяй при необходимости
+study_group = "БИ211" 
 fullname = "Ялтонская Екатерина Максимовна"
 suffix = "ИТКС. Лабораторная работа 1"
 string_for_hash = f"{study_group} {fullname} {suffix}"
@@ -17,7 +17,6 @@ print("Variant:", variant)
 # === Подключение к БД (берём из переменной окружения) ===
 db_url = os.environ.get("DATABASE_URL")
 if not db_url:
-    # На проде лучше падать с ошибкой. Для отладки допустим fallback, но в compose мы зададим DATABASE_URL.
     db_url = "sqlite:///dev.sqlite3"
 app.config["SQLALCHEMY_DATABASE_URI"] = db_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -41,7 +40,7 @@ def index():
 def health():
     return jsonify(status="ok"), 200
 
-# === CRUD: начнём с 2-х endpoints (остальные добавишь по шагам) ===
+# === CRUD: начнём с 2-х endpoints ===
 @app.route("/tasks", methods=["GET"])
 def list_tasks():
     tasks = Task.query.all()
